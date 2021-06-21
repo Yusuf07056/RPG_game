@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://World/GrassBackground.png" type="Texture" id=1]
+
+[node name="world2" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+margin_right = 640.0
+margin_bottom = 360.0
+texture = ExtResource( 1 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+region_filter_clip = true
+
+[node name="GrassBackground" type="Sprite" parent="Sprite"]
+position = Vector2( 320, 184 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, -16, 640, 376 )
+region_filter_clip = true

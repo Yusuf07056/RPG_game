@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://MENU.gd" type="Script" id=1]
+[ext_resource path="res://15.png" type="Texture" id=2]
+[ext_resource path="res://menu background.png" type="Texture" id=3]
+[ext_resource path="res://Doctor Glitch.otf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+outline_color = Color( 0.666667, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[node name="MENU" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BACKGROUND" type="Sprite" parent="."]
+position = Vector2( 328.025, 155.375 )
+scale = Vector2( 0.872755, 0.872755 )
+texture = ExtResource( 3 )
+
+[node name="LOGO" type="Sprite" parent="."]
+position = Vector2( 216, 62 )
+scale = Vector2( 0.0370324, 0.0370324 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -42.0
+margin_top = -22.0
+margin_right = 42.0
+margin_bottom = 22.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NEWGAME" type="Button" parent="VBoxContainer"]
+margin_right = 84.0
+margin_bottom = 20.0
+focus_neighbour_top = NodePath("../EXIT")
+text = "NEW GAME"
+
+[node name="EXIT" type="Button" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 84.0
+margin_bottom = 44.0
+focus_neighbour_bottom = NodePath("../NEWGAME")
+text = "EXIT"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 232.0
+margin_top = 64.0
+margin_right = 416.0
+margin_bottom = 104.0
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "INFECTION"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="VBoxContainer/NEWGAME" to="." method="_on_NEWGAME_pressed"]
+[connection signal="pressed" from="VBoxContainer/EXIT" to="." method="_on_EXIT_pressed"]
