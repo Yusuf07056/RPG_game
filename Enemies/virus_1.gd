@@ -13,7 +13,7 @@ func _physics_process(delta):
 
 func _on_hurt_box_area_entered(area):
 	Enemy_stats.healt -=1
-	knockback = area.knockback_vector * 110
+	knockback = area.knockback_vector * 90
 
 func _on_enemy_stat_death():
 	queue_free()
