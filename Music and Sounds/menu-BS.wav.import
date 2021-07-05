@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/menu-BS.wav-4c3236feee438325f85a27efd90ce46d.sample"
+
+[deps]
+
+source_file="res://Music and Sounds/menu-BS.wav"
+dest_files=[ "res://.import/menu-BS.wav-4c3236feee438325f85a27efd90ce46d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://enemy_stat.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player_stat.gd" type="Script" id=2]
+
+[node name="Player_stat" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+healt_point = 4

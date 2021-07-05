@@ -7,3 +7,4 @@ func _physics_process(delta):
 	for body in bodies:
 		if body.name == "player":
 			get_tree().change_scene("res://world.tscn")
+			position.angle_to(Vector2.DOWN)

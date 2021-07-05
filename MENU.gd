@@ -17,7 +17,8 @@ func _ready():
 
 
 func _on_NEWGAME_pressed():
-	get_tree().change_scene("res://world.tscn")
+	PlayerStat.healt = PlayerStat.healt_point
+	get_tree().change_scene("res://prolgue.tscn")
 
 
 func _on_EXIT_pressed():

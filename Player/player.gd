@@ -13,12 +13,15 @@ enum{
 var state = MOVE
 var velocity = Vector2.ZERO
 var knock_vector = Vector2.LEFT
+var stats = PlayerStat
+
 onready var animasi = $AnimationPlayer
 onready var animasi_tree = $AnimationTree
 onready var animasi_state = animasi_tree.get("parameters/playback")
 onready var hit_box = $hit_pivot/hit_box
 
 func _ready():
+	stats.connect("death",self, "queue_free")
 	animasi_tree.active = true
 	hit_box.knockback_vector = knock_vector
 
@@ -61,3 +64,7 @@ func move():
 	velocity =  move_and_slide(velocity)
 func animasi_selesai():
 	state = MOVE
+
+
+func _on_hurt_box_area_entered(area):
+	stats.healt -=1

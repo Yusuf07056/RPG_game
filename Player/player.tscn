@@ -1,9 +1,10 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Player/Player.png" type="Texture" id=1]
 [ext_resource path="res://Player/player.gd" type="Script" id=2]
 [ext_resource path="res://hit_and_damage/hit_box.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/hit_box.gd" type="Script" id=4]
+[ext_resource path="res://Music and Sounds/Swipe.wav" type="AudioStream" id=4]
+[ext_resource path="res://hit_and_damage/hurt_box.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.65499
@@ -61,6 +62,20 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0.1 )
 }
 
 [sub_resource type="Animation" id=3]
@@ -128,6 +143,20 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/5/type = "audio"
+tracks/5/path = NodePath("AudioStreamPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0.1 )
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "attack_kiri"
@@ -182,6 +211,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [ false, true ]
 }
+tracks/4/type = "audio"
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0.1 )
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "attack_up"
@@ -235,6 +278,20 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("AudioStreamPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0.1 )
 }
 
 [sub_resource type="Animation" id=6]
@@ -460,6 +517,10 @@ graph_offset = Vector2( -296.678, 66.5916 )
 radius = 15.0
 height = 0.0
 
+[sub_resource type="CapsuleShape2D" id=36]
+radius = 3.44394
+height = 10.2088
+
 [node name="player" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 2 )
@@ -506,11 +567,23 @@ rotation = -1.5708
 
 [node name="hit_box" parent="hit_pivot" instance=ExtResource( 3 )]
 collision_mask = 8
-script = ExtResource( 4 )
 
 [node name="CollisionShape2D" parent="hit_pivot/hit_box" index="0"]
 position = Vector2( -3.83977, -14.7396 )
 shape = SubResource( 35 )
 disabled = true
 
+[node name="hurt_box" parent="." instance=ExtResource( 5 )]
+collision_layer = 4
+
+[node name="CollisionShape2D" parent="hurt_box" index="0"]
+position = Vector2( 4.72471, -9.29192 )
+shape = SubResource( 36 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[connection signal="area_entered" from="hurt_box" to="." method="_on_hurt_box_area_entered"]
+
 [editable path="hit_pivot/hit_box"]
+[editable path="hurt_box"]
