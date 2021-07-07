@@ -17,6 +17,7 @@ func set_healt(value):
 	emit_signal("healt_change", healt)
 	if healt <= 0 :
 		emit_signal("death")
+		
 func _ready():
 	self.healt = healt_point
 	

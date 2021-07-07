@@ -17,7 +17,6 @@ onready var Enemy_stats = $enemy_stat
 onready var playerdetectzone = $playerdetectzone
 
 var state = CHASE
-
 func _ready():
 	print(Enemy_stats.healt_point)
 	print(Enemy_stats.healt)
@@ -42,7 +41,7 @@ func _physics_process(delta):
 			else:
 				state = IDLE
 			sprite.flip_h = velocity.x < 0
-	
+			
 	velocity = move_and_slide(velocity)
 
 func seek_player():
@@ -53,5 +52,7 @@ func _on_hurt_box_area_entered(area):
 	Enemy_stats.healt -=1
 	knockback = area.knockback_vector * 90
 
+
 func _on_enemy_stat_death():
 	queue_free()
+

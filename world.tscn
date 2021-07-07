@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://World/semak.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/player.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://world.gd" type="Script" id=13]
 [ext_resource path="res://Shadows/MediumShadow.png" type="Texture" id=14]
 [ext_resource path="res://Music and Sounds/Music.mp3" type="AudioStream" id=15]
+[ext_resource path="res://usable item/coin.tscn" type="PackedScene" id=16]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -1042,6 +1043,11 @@ position = Vector2( 580.454, 239.2 )
 
 [node name="virus_18" parent="character" instance=ExtResource( 8 )]
 position = Vector2( 256.506, 237.904 )
+
+[node name="Area2D2" parent="character" instance=ExtResource( 16 )]
+position = Vector2( 32, 112 )
+collision_layer = 16
+collision_mask = 16
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource( 10 )

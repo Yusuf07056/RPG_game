@@ -449,7 +449,7 @@ format = 1
 tile_data = PoolIntArray( 0, 0, 4, 1, 0, 196611, 2, 0, 196611, 5, 0, 196611, 6, 0, 196611, 7, 0, 196608, 8, 0, 196610, 65536, 0, 196611, 131072, 0, 196611, 131080, 0, 196611, 131081, 0, 196611, 196608, 0, 65539, 262144, 0, 65539, 327680, 0, 196611, 327681, 0, 196610, 327683, 0, 196611, 327684, 0, 196611, 327685, 0, 196611, 327686, 0, 196611, 327687, 0, 196611, 327688, 0, 196611 )
 
 [node name="Camera2D" type="Camera2D" parent="Sprite"]
-position = Vector2( 146.477, 328.255 )
+position = Vector2( 143.14, 308.232 )
 current = true
 zoom = Vector2( 0.7, 0.7 )
 smoothing_enabled = true
@@ -460,7 +460,7 @@ smoothing_enabled = true
 position = Vector2( 275.104, 133.123 )
 
 [node name="player" parent="character" instance=ExtResource( 3 )]
-position = Vector2( 146.477, 328.255 )
+position = Vector2( 143.14, 308.232 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="character/player"]
 remote_path = NodePath("../../../Sprite/Camera2D")
