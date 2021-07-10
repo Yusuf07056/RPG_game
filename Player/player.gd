@@ -4,7 +4,7 @@ export(int) var ACCEL = 500
 export(int) var MAX_SPEED = 80
 export(int) var knockback_speed = 120
 export(int) var FRICT = 500
-var enemy = 0
+var obat = 0
 enum{
 	MOVE,
 	KNOCK,
@@ -33,8 +33,8 @@ func _physics_process(delta):
 			pass
 		ATTACK:
 			attack_state(delta)
-	if enemy == 3:
-		get_tree().change_scene("res://world2.tscn")
+	if obat == 3:
+		get_tree().change_scene("res://WINGAME.tscn")
 func move_state(delta):
 	var inputan = Vector2.ZERO
 	inputan.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -68,5 +68,5 @@ func animasi_selesai():
 func _on_hurt_box_area_entered(area):
 	stats.healt -=1
 
-func count_enemy():
-	enemy = enemy + 1
+func count_obat():
+	obat = obat + 1

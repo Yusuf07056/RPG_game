@@ -14,10 +14,10 @@ func _on_QUIT_pressed():
 	get_tree().quit()
 
 
-func _on_RESTART_pressed():
-	PlayerStat.healt = PlayerStat.healt_point
-	get_tree().change_scene("res://world.tscn")
-
-
 func _on_TOMENU_pressed():
 	get_tree().change_scene("res://MENU.tscn")
+
+
+func _on_NEXT_STAGE_pressed():
+	PlayerStat.healt = PlayerStat.healt_point
+	get_tree().change_scene("res://world3.tscn")

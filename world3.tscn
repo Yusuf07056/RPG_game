@@ -1,24 +1,21 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://World/semak.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Player/player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://World/GrassBackground.png" type="Texture" id=3]
-[ext_resource path="res://World/DirtTileset.png" type="Texture" id=4]
-[ext_resource path="res://World/pohon.tscn" type="PackedScene" id=5]
-[ext_resource path="res://World/CliffTileset.png" type="Texture" id=6]
-[ext_resource path="res://World/rumput.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Enemies/virus_1.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Area2D1.gd" type="Script" id=9]
-[ext_resource path="res://Enemies/virus_2.tscn" type="PackedScene" id=11]
-[ext_resource path="res://UI/Healt_UI.tscn" type="PackedScene" id=12]
-[ext_resource path="res://world.gd" type="Script" id=13]
-[ext_resource path="res://Shadows/MediumShadow.png" type="Texture" id=14]
-[ext_resource path="res://Music and Sounds/Music.mp3" type="AudioStream" id=15]
-[ext_resource path="res://usable item/pill.tscn" type="PackedScene" id=16]
+[ext_resource path="res://World/GrassBackground.png" type="Texture" id=1]
+[ext_resource path="res://World/DirtTileset.png" type="Texture" id=2]
+[ext_resource path="res://Player/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/rumput.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/semak.tscn" type="PackedScene" id=6]
+[ext_resource path="res://World/pohon.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/Healt_UI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/virus_1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/virus_2.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Area2D1.gd" type="Script" id=11]
+[ext_resource path="res://Shadows/MediumShadow.png" type="Texture" id=12]
+[ext_resource path="res://World/CliffTileset.png" type="Texture" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
-0/texture = ExtResource( 4 )
+0/texture = ExtResource( 2 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 176, 80 )
@@ -46,7 +43,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 
 [sub_resource type="TileSet" id=3]
 0/name = "CliffTileset.png 0"
-0/texture = ExtResource( 6 )
+0/texture = ExtResource( 13 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 352, 160 )
@@ -382,7 +379,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 } ]
 0/z_index = 0
 1/name = "CliffTileset.png 1"
-1/texture = ExtResource( 6 )
+1/texture = ExtResource( 13 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 0, 352, 160 )
@@ -411,14 +408,13 @@ extents = Vector2( 25.6978, 24.6559 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 415.555, 3.332 )
 
-[node name="world" type="Node2D"]
-script = ExtResource( 13 )
+[node name="world2" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
 margin_right = 640.0
 margin_bottom = 360.0
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -429,7 +425,7 @@ region_filter_clip = true
 
 [node name="GrassBackground" type="Sprite" parent="Sprite"]
 position = Vector2( 300.4, 144.019 )
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, -16, 1170, 806 )
 region_filter_clip = true
@@ -444,7 +440,7 @@ tile_data = PoolIntArray( -1179669, 0, 0, -1179668, 0, 1, -1179667, 0, 2, -11141
 [node name="Sprite2" type="Sprite" parent="Sprite/JALAN"]
 position = Vector2( -391.85, 58.5982 )
 scale = Vector2( 3.04397, 2.40158 )
-texture = ExtResource( 14 )
+texture = ExtResource( 12 )
 
 [node name="TEMBOK" type="TileMap" parent="Sprite"]
 tile_set = SubResource( 3 )
@@ -460,605 +456,596 @@ smoothing_enabled = true
 
 [node name="character" type="YSort" parent="."]
 
-[node name="virus_1" parent="character" instance=ExtResource( 8 )]
+[node name="virus_1" parent="character" instance=ExtResource( 9 )]
 position = Vector2( 275.104, 133.123 )
 
-[node name="player" parent="character" instance=ExtResource( 2 )]
+[node name="player" parent="character" instance=ExtResource( 3 )]
 position = Vector2( 143.14, 308.232 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="character/player"]
 remote_path = NodePath("../../../Sprite/Camera2D")
 
-[node name="virus_4" parent="character" instance=ExtResource( 8 )]
+[node name="virus_4" parent="character" instance=ExtResource( 9 )]
 position = Vector2( 585.363, 117.21 )
 scale = Vector2( 1.47306, 1.3179 )
 
-[node name="virus_5" parent="character" instance=ExtResource( 8 )]
+[node name="virus_5" parent="character" instance=ExtResource( 9 )]
 position = Vector2( 608, 200 )
 
-[node name="virus_6" parent="character" instance=ExtResource( 8 )]
+[node name="virus_6" parent="character" instance=ExtResource( 9 )]
 position = Vector2( 284.052, 198.704 )
 
-[node name="virus_8" parent="character" instance=ExtResource( 8 )]
+[node name="virus_8" parent="character" instance=ExtResource( 9 )]
 position = Vector2( 146.197, 221.092 )
 scale = Vector2( 1.64, 1.64 )
 
-[node name="virus_9" parent="character" instance=ExtResource( 8 )]
+[node name="virus_9" parent="character" instance=ExtResource( 9 )]
 position = Vector2( 272.036, 282.888 )
 
-[node name="virus_10" parent="character" instance=ExtResource( 8 )]
+[node name="virus_10" parent="character" instance=ExtResource( 9 )]
 position = Vector2( 574.867, 330.92 )
 scale = Vector2( 1.64198, 1.42357 )
 
 [node name="tumbuhan" type="YSort" parent="character"]
 
-[node name="semak" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 194.679, 67.3461 )
 
-[node name="semak2" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak2" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 368, 112 )
 
-[node name="semak3" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak3" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 184, 216 )
 
-[node name="semak4" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak4" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 208, 216 )
 
-[node name="semak5" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak5" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 240, 160 )
 
-[node name="semak6" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak6" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 433, 163 )
 
-[node name="semak7" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak7" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 104, 176 )
 
-[node name="semak8" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak8" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 40, 264 )
 
-[node name="pohon" parent="character/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 79.0975, 309.529 )
+[node name="pohon" parent="character/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 119.81, 70.5928 )
 
-[node name="pohon8" parent="character/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 486.147, 99.4753 )
+[node name="pohon8" parent="character/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 497.493, 83.4573 )
 
-[node name="pohon2" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon2" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 18.6606, 47.3326 )
 
-[node name="pohon3" parent="character/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 192.693, 161.418 )
+[node name="pohon3" parent="character/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 465, 86 )
 
-[node name="pohon4" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon4" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 86.6742, 239.864 )
 
-[node name="pohon5" parent="character/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 357.381, 286.921 )
+[node name="pohon5" parent="character/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 611, 357 )
 
-[node name="pohon6" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon6" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 616, 24 )
 
-[node name="pohon7" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon7" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 48, 40 )
 
-[node name="pohon9" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon9" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 592, 21 )
 
-[node name="pohon10" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon10" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 566, 19 )
 
-[node name="pohon11" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon11" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 100.717, 202.159 )
 
-[node name="pohon12" parent="character/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 73.3801, 325.959 )
+[node name="pohon12" parent="character/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 92.7352, 351.321 )
 
-[node name="pohon13" parent="character/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 349.709, 256.595 )
+[node name="pohon13" parent="character/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 608, 320 )
 
-[node name="pohon14" parent="character/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 312.001, 135.835 )
+[node name="pohon14" parent="character/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 607, 282 )
 
-[node name="semak9" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak9" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 17, 209 )
 
-[node name="semak10" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak10" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 232, 216 )
 
-[node name="semak11" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak11" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 256, 216 )
 
-[node name="semak12" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak12" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 480, 216 )
 
-[node name="semak13" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak13" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 504, 216 )
 
-[node name="semak14" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak14" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 528, 216 )
 
-[node name="semak15" parent="character/tumbuhan" instance=ExtResource( 1 )]
+[node name="semak15" parent="character/tumbuhan" instance=ExtResource( 6 )]
 position = Vector2( 552, 216 )
 
-[node name="pohon15" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon15" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -30.1766, 108.476 )
 
-[node name="pohon16" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon16" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -28.4496, 136.763 )
 
-[node name="pohon17" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon17" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -52.4496, 133.763 )
 
-[node name="pohon18" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon18" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -78.4496, 131.763 )
 
-[node name="pohon19" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon19" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -26.5597, 164.481 )
 
-[node name="pohon20" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon20" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -50.5597, 161.481 )
 
-[node name="pohon21" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon21" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -76.5597, 159.481 )
 
-[node name="pohon22" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon22" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -28.4496, 191.57 )
 
-[node name="pohon23" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon23" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -52.4496, 188.57 )
 
-[node name="pohon24" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon24" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -78.4496, 186.57 )
 
-[node name="pohon25" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon25" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -25.9297, 228.107 )
 
-[node name="pohon26" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon26" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -53.0796, 215.658 )
 
-[node name="pohon27" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon27" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -79.0796, 213.658 )
 
-[node name="pohon28" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon28" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -24.0399, 266.535 )
 
-[node name="pohon29" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon29" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -51.1897, 243.376 )
 
-[node name="pohon30" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon30" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -77.1897, 241.376 )
 
-[node name="pohon31" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon31" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -25.2998, 303.703 )
 
-[node name="pohon32" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon32" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -57.4893, 291.253 )
 
-[node name="pohon33" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon33" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -79.0796, 268.464 )
 
-[node name="pohon39" parent="character/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 83.8024, 288.424 )
+[node name="pohon39" parent="character/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 103.825, 132.248 )
 
-[node name="pohon40" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon40" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( -0.265152, 30.461 )
 
-[node name="pohon41" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon41" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 42.7622, -3.67461 )
 
-[node name="pohon42" parent="character/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon42" parent="character/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 18.7622, 1.32539 )
 
 [node name="tumbuhan" type="YSort" parent="character/tumbuhan"]
 
-[node name="pohon" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 276.031, -16.4504 )
 
-[node name="pohon8" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon8" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 315.683, -18.262 )
 
-[node name="pohon2" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon2" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 146.842, -17.5159 )
 
-[node name="pohon3" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon3" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 350.347, -17.3135 )
 
-[node name="pohon4" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon4" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 432.443, -17.3235 )
 
-[node name="pohon5" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 156.487, 162.781 )
+[node name="pohon5" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 97.7542, 156.774 )
 
-[node name="pohon6" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 231.818, 141.421 )
+[node name="pohon6" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 690.335, 282.914 )
 
-[node name="pohon7" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon7" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 186.591, -19.8463 )
 
-[node name="pohon9" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 458.918, 119.121 )
+[node name="pohon9" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 663.816, 312.672 )
 
-[node name="pohon10" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 345.96, 228.794 )
+[node name="pohon10" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 652.305, 262.165 )
 
-[node name="pohon11" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon11" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 408.443, -20.3235 )
 
-[node name="pohon12" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon12" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 384.443, -15.3235 )
 
-[node name="pohon13" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon13" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 529.912, 85.7356 )
 
-[node name="pohon14" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 360.723, 327.384 )
+[node name="pohon14" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 607, 282 )
 
-[node name="pohon15" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 647.658, 76.4436 )
+[node name="pohon15" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 715.067, 41.0704 )
 
-[node name="pohon16" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 545.267, -10.733 )
+[node name="pohon16" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 716.794, 69.3572 )
 
-[node name="pohon17" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 626.72, 323.981 )
+[node name="pohon17" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 692.794, 66.3572 )
 
-[node name="pohon18" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 654.113, 200.511 )
+[node name="pohon18" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 666.794, 64.3572 )
 
-[node name="pohon19" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 641.931, 158.478 )
+[node name="pohon19" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 718.684, 97.0754 )
 
-[node name="pohon20" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 632.614, 284.29 )
+[node name="pohon20" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 694.684, 94.0754 )
 
-[node name="pohon21" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 635.98, 231.566 )
+[node name="pohon21" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 668.684, 92.0754 )
 
-[node name="pohon22" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 615.346, 108.813 )
+[node name="pohon22" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 716.794, 124.164 )
 
-[node name="pohon23" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 595.351, 163.879 )
+[node name="pohon23" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 692.794, 121.164 )
 
-[node name="pohon24" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 563.344, 167.218 )
+[node name="pohon24" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 666.794, 119.164 )
 
-[node name="pohon25" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 331.543, 210.757 )
+[node name="pohon25" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 719.313, 160.701 )
 
-[node name="pohon26" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 227.641, -19.9375 )
+[node name="pohon26" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 692.164, 148.252 )
 
-[node name="pohon28" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 328.093, 193.122 )
+[node name="pohon27" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 666.164, 146.252 )
 
-[node name="pohon29" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 316.295, 167.294 )
+[node name="pohon28" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 721.203, 199.129 )
 
-[node name="pohon30" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 601.98, 66.5156 )
+[node name="pohon29" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 694.054, 175.97 )
 
-[node name="pohon31" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 344.186, 132.847 )
+[node name="pohon30" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 668.054, 173.97 )
 
-[node name="pohon32" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 401.357, 125.032 )
+[node name="pohon31" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 719.943, 236.297 )
 
-[node name="pohon33" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 568.721, 39.5437 )
+[node name="pohon32" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 689.014, 224.477 )
 
-[node name="pohon34" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon33" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 666.164, 201.059 )
+
+[node name="pohon34" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 464.928, -21.8296 )
 
-[node name="pohon35" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon35" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 511.31, -20.3235 )
 
-[node name="pohon36" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon36" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 487.31, -15.3235 )
 
-[node name="pohon37" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon37" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 119.466, -19.7289 )
 
-[node name="pohon38" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 5 )]
+[node name="pohon38" parent="character/tumbuhan/tumbuhan" instance=ExtResource( 7 )]
 position = Vector2( 95.466, -14.7289 )
 
-[node name="pohon34" parent="character/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 136.794, 184.153 )
+[node name="pohon34" parent="character/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 101.421, 96.7216 )
 
-[node name="pohon35" parent="character/tumbuhan" instance=ExtResource( 5 )]
-position = Vector2( 86.4393, 354.913 )
+[node name="pohon35" parent="character/tumbuhan" instance=ExtResource( 7 )]
+position = Vector2( 154.516, 65.2535 )
 
 [node name="rumput" type="YSort" parent="character"]
 
-[node name="Node2D" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 624, 80 )
 
-[node name="Node2D2" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D2" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 624, 96 )
 
-[node name="Node2D3" parent="character/rumput" instance=ExtResource( 7 )]
-position = Vector2( 463.152, 142.701 )
+[node name="Node2D3" parent="character/rumput" instance=ExtResource( 5 )]
+position = Vector2( 624, 112 )
 
-[node name="Node2D4" parent="character/rumput" instance=ExtResource( 7 )]
-position = Vector2( 473.831, 161.371 )
+[node name="Node2D4" parent="character/rumput" instance=ExtResource( 5 )]
+position = Vector2( 624, 128 )
 
-[node name="Node2D5" parent="character/rumput" instance=ExtResource( 7 )]
-position = Vector2( 453.808, 162.02 )
+[node name="Node2D5" parent="character/rumput" instance=ExtResource( 5 )]
+position = Vector2( 624, 144 )
 
-[node name="Node2D6" parent="character/rumput" instance=ExtResource( 7 )]
-position = Vector2( 497.19, 164.672 )
+[node name="Node2D6" parent="character/rumput" instance=ExtResource( 5 )]
+position = Vector2( 624, 160 )
 
-[node name="Node2D7" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D7" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 256, 0 )
 
-[node name="Node2D8" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D8" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 256, 16 )
 
-[node name="Node2D9" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D9" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 256, 32 )
 
-[node name="Node2D10" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D10" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 272, 16 )
 
-[node name="Node2D11" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D11" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 272, 0 )
 
-[node name="Node2D12" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D12" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 289, 0 )
 
-[node name="Node2D13" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D13" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 304, 288 )
 
-[node name="Node2D14" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D14" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 288, 272 )
 
-[node name="Node2D15" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D15" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 288, 256 )
 
-[node name="Node2D16" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D16" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 288, 240 )
 
-[node name="Node2D17" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D17" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 304, 225 )
 
-[node name="Node2D18" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D18" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 320, 208 )
 
-[node name="Node2D19" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D19" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 384, 208 )
 
-[node name="Node2D21" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D21" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 400, 224 )
 
-[node name="Node2D22" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D22" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 416, 240 )
 
-[node name="Node2D23" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D23" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 416, 256 )
 
-[node name="Node2D24" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D24" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 416, 272 )
 
-[node name="Node2D25" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D25" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 400, 288 )
 
-[node name="Node2D26" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D26" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 384, 304 )
 
-[node name="Node2D27" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D27" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 320, 304 )
 
-[node name="Node2D28" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D28" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 336, 304 )
 
-[node name="Node2D20" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D20" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 368, 208 )
 
-[node name="Node2D29" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D29" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 305, 212 )
 
-[node name="Node2D30" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D30" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 292, 229 )
 
-[node name="Node2D31" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D31" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 394, 212 )
 
-[node name="Node2D32" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D32" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 297, 221 )
 
-[node name="Node2D33" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D33" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 410, 231 )
 
-[node name="Node2D34" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D34" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 411, 281 )
 
-[node name="Node2D35" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D35" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 394, 296 )
 
-[node name="Node2D36" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D36" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 295, 282 )
 
-[node name="Node2D37" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D37" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 310, 298 )
 
-[node name="Node2D38" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D38" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 407, 220 )
 
-[node name="Node2D39" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D39" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 176, 108 )
 
-[node name="Node2D40" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D40" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 176, 124 )
 
-[node name="Node2D41" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D41" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 176, 140 )
 
-[node name="Node2D42" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D42" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 192, 124 )
 
-[node name="Node2D43" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D43" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 192, 108 )
 
-[node name="Node2D44" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D44" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 209, 108 )
 
-[node name="Node2D45" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D45" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 369, 161 )
 
-[node name="Node2D46" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D46" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 369, 144 )
 
-[node name="Node2D47" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D47" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 336, 161 )
 
-[node name="Node2D48" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D48" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 352, 143 )
 
-[node name="Node2D49" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D49" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 353, 161 )
 
-[node name="Node2D50" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D50" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 369, 127 )
 
-[node name="Node2D51" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D51" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 144 )
 
-[node name="Node2D52" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D52" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 152 )
 
-[node name="Node2D53" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D53" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 160 )
 
-[node name="Node2D54" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D54" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 168 )
 
-[node name="Node2D55" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D55" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 176 )
 
-[node name="Node2D56" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D56" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 224 )
 
-[node name="Node2D57" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D57" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 32, 184 )
 
-[node name="Node2D58" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D58" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 32, 192 )
 
-[node name="Node2D59" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D59" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 32, 200 )
 
-[node name="Node2D60" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D60" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 32, 208 )
 
-[node name="Node2D61" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D61" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 32, 216 )
 
-[node name="Node2D62" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D62" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 144 )
 
-[node name="Node2D63" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D63" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 152 )
 
-[node name="Node2D64" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D64" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 160 )
 
-[node name="Node2D65" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D65" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 168 )
 
-[node name="Node2D66" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D66" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 176 )
 
-[node name="Node2D67" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D67" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 232 )
 
-[node name="Node2D68" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D68" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 240 )
 
-[node name="Node2D69" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D69" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 248 )
 
-[node name="Node2D70" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D70" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 256 )
 
-[node name="Node2D71" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D71" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 8, 264 )
 
-[node name="Node2D72" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D72" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 176, 152 )
 
-[node name="Node2D73" parent="character/rumput" instance=ExtResource( 7 )]
+[node name="Node2D73" parent="character/rumput" instance=ExtResource( 5 )]
 position = Vector2( 176, 160 )
 
-[node name="Node2D74" parent="character/rumput" instance=ExtResource( 7 )]
-position = Vector2( 307.842, 240.758 )
+[node name="Node2D74" parent="character/rumput" instance=ExtResource( 5 )]
+position = Vector2( 448, 160 )
 
-[node name="Node2D75" parent="character/rumput" instance=ExtResource( 7 )]
-position = Vector2( 423.955, 216.749 )
+[node name="Node2D75" parent="character/rumput" instance=ExtResource( 5 )]
+position = Vector2( 464, 144 )
 
-[node name="Node2D76" parent="character/rumput" instance=ExtResource( 7 )]
-position = Vector2( 433.281, 232.117 )
+[node name="Node2D76" parent="character/rumput" instance=ExtResource( 5 )]
+position = Vector2( 480, 128 )
 
-[node name="Node2D77" parent="character/rumput" instance=ExtResource( 7 )]
-position = Vector2( 309.123, 260.834 )
+[node name="Node2D77" parent="character/rumput" instance=ExtResource( 5 )]
+position = Vector2( 496, 112 )
 
-[node name="Node2D78" parent="character/rumput" instance=ExtResource( 7 )]
-position = Vector2( 324.455, 243.5 )
+[node name="Node2D78" parent="character/rumput" instance=ExtResource( 5 )]
+position = Vector2( 512, 96 )
 
-[node name="Node2D79" parent="character/rumput" instance=ExtResource( 7 )]
-position = Vector2( 321.768, 280.208 )
+[node name="Node2D79" parent="character/rumput" instance=ExtResource( 5 )]
+position = Vector2( 528, 96 )
 
-[node name="Node2D80" parent="character/rumput" instance=ExtResource( 7 )]
-position = Vector2( 323.752, 264.857 )
+[node name="Node2D80" parent="character/rumput" instance=ExtResource( 5 )]
+position = Vector2( 544, 96 )
 
-[node name="virus_7" parent="character" instance=ExtResource( 11 )]
+[node name="virus_7" parent="character" instance=ExtResource( 10 )]
 position = Vector2( 153.451, 117.683 )
 
-[node name="virus_11" parent="character" instance=ExtResource( 11 )]
-position = Vector2( 365.468, 39.7678 )
+[node name="virus_11" parent="character" instance=ExtResource( 10 )]
+position = Vector2( 398.839, 148.557 )
 
-[node name="virus_12" parent="character" instance=ExtResource( 11 )]
-position = Vector2( 516.983, 280.353 )
+[node name="virus_12" parent="character" instance=ExtResource( 10 )]
+position = Vector2( 421.542, 194.923 )
 scale = Vector2( 1.64, 1.76 )
 
-[node name="virus_13" parent="character" instance=ExtResource( 11 )]
+[node name="virus_13" parent="character" instance=ExtResource( 10 )]
 position = Vector2( 257.299, 94.2163 )
 
-[node name="virus_14" parent="character" instance=ExtResource( 11 )]
+[node name="virus_14" parent="character" instance=ExtResource( 10 )]
 position = Vector2( 561.996, 74.9243 )
 
-[node name="virus_15" parent="character" instance=ExtResource( 11 )]
-position = Vector2( 313.484, 55.3894 )
+[node name="virus_15" parent="character" instance=ExtResource( 10 )]
+position = Vector2( 406.255, 80.7513 )
 scale = Vector2( 1.64, 1.76 )
 
-[node name="virus_2" parent="character" instance=ExtResource( 8 )]
+[node name="virus_2" parent="character" instance=ExtResource( 9 )]
 position = Vector2( 182.479, 180.239 )
 
-[node name="virus_16" parent="character" instance=ExtResource( 8 )]
+[node name="virus_16" parent="character" instance=ExtResource( 9 )]
 position = Vector2( 444.454, 295.2 )
 scale = Vector2( 1.47306, 1.3179 )
 
-[node name="virus_17" parent="character" instance=ExtResource( 8 )]
-position = Vector2( 392.909, 272.571 )
+[node name="virus_17" parent="character" instance=ExtResource( 9 )]
+position = Vector2( 580.454, 239.2 )
 
-[node name="virus_18" parent="character" instance=ExtResource( 8 )]
-position = Vector2( 351.947, 241.909 )
-
-[node name="Area2D" parent="character" instance=ExtResource( 16 )]
-position = Vector2( 583.342, 83.2107 )
-scale = Vector2( 0.36, 0.36 )
-
-[node name="Area2D2" parent="character" instance=ExtResource( 16 )]
-position = Vector2( 586.499, 259.905 )
-scale = Vector2( 0.36, 0.36 )
-
-[node name="Area2D3" parent="character" instance=ExtResource( 16 )]
-position = Vector2( 226.39, 31.0889 )
-scale = Vector2( 0.36, 0.36 )
+[node name="virus_18" parent="character" instance=ExtResource( 9 )]
+position = Vector2( 331.257, 242.576 )
 
 [node name="Area2D" type="Area2D" parent="."]
-script = ExtResource( 9 )
+script = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 151.81, 356.709 )
+position = Vector2( 151.81, 360.714 )
 shape = SubResource( 4 )
 
 [node name="boder" type="KinematicBody2D" parent="."]
@@ -1083,9 +1070,4 @@ shape = SubResource( 5 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Healt_UI" parent="CanvasLayer" instance=ExtResource( 12 )]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 15 )
-volume_db = -3.216
-autoplay = true
+[node name="Healt_UI" parent="CanvasLayer" instance=ExtResource( 8 )]

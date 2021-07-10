@@ -15,7 +15,7 @@
 [ext_resource path="res://world.gd" type="Script" id=13]
 [ext_resource path="res://Shadows/MediumShadow.png" type="Texture" id=14]
 [ext_resource path="res://Music and Sounds/Music.mp3" type="AudioStream" id=15]
-[ext_resource path="res://usable item/coin.tscn" type="PackedScene" id=16]
+[ext_resource path="res://usable item/pill.tscn" type="PackedScene" id=16]
 
 [sub_resource type="TileSet" id=1]
 0/name = "DirtTileset.png 0"
@@ -454,7 +454,7 @@ format = 1
 tile_data = PoolIntArray( 0, 0, 4, 1, 0, 196611, 2, 0, 196611, 5, 0, 196611, 6, 0, 196611, 7, 0, 196608, 8, 0, 196610, 65536, 0, 196611, 131072, 0, 196611, 131080, 0, 196611, 131081, 0, 196611, 196608, 0, 65539, 262144, 0, 65539, 327680, 0, 196611, 327681, 0, 196610, 327683, 0, 196611, 327684, 0, 196611, 327685, 0, 196611, 327686, 0, 196611, 327687, 0, 196611, 327688, 0, 196611 )
 
 [node name="Camera2D" parent="Sprite" instance=ExtResource( 9 )]
-position = Vector2( 226.994, 34.7022 )
+position = Vector2( 233, 56 )
 
 [node name="kiri_atas" parent="Sprite/Camera2D/limit" index="0"]
 position = Vector2( -64, -96 )
@@ -468,7 +468,7 @@ position = Vector2( 688, 424 )
 position = Vector2( 78.2147, 127.784 )
 
 [node name="player" parent="character" instance=ExtResource( 2 )]
-position = Vector2( 225.994, 34.7022 )
+position = Vector2( 232, 56 )
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="character/player"]
 position = Vector2( 1, 0 )
@@ -485,11 +485,11 @@ position = Vector2( 608, 200 )
 position = Vector2( 284.052, 198.704 )
 
 [node name="virus_8" parent="character" instance=ExtResource( 8 )]
-position = Vector2( 113.995, 287.894 )
+position = Vector2( 104, 240 )
 scale = Vector2( 1.64, 1.64 )
 
 [node name="virus_9" parent="character" instance=ExtResource( 8 )]
-position = Vector2( 161.564, 324.76 )
+position = Vector2( 144, 248 )
 
 [node name="virus_10" parent="character" instance=ExtResource( 8 )]
 position = Vector2( 574.867, 330.92 )
@@ -1012,13 +1012,13 @@ position = Vector2( 528, 96 )
 position = Vector2( 544, 96 )
 
 [node name="virus_7" parent="character" instance=ExtResource( 11 )]
-position = Vector2( 80.7027, 103 )
+position = Vector2( 80, 104 )
 
 [node name="virus_11" parent="character" instance=ExtResource( 11 )]
 position = Vector2( 398.839, 148.557 )
 
 [node name="virus_12" parent="character" instance=ExtResource( 11 )]
-position = Vector2( 229.325, 282.579 )
+position = Vector2( 224, 264 )
 scale = Vector2( 1.64, 1.76 )
 
 [node name="virus_13" parent="character" instance=ExtResource( 11 )]
@@ -1042,18 +1042,25 @@ scale = Vector2( 1.47306, 1.3179 )
 position = Vector2( 580.454, 239.2 )
 
 [node name="virus_18" parent="character" instance=ExtResource( 8 )]
-position = Vector2( 256.506, 237.904 )
+position = Vector2( 168, 240 )
+
+[node name="Area2D" parent="character" instance=ExtResource( 16 )]
+position = Vector2( 576, 192 )
+scale = Vector2( 0.36, 0.36 )
 
 [node name="Area2D2" parent="character" instance=ExtResource( 16 )]
-position = Vector2( 32, 112 )
-collision_layer = 16
-collision_mask = 16
+position = Vector2( 144, 344 )
+scale = Vector2( 0.36, 0.36 )
+
+[node name="Area2D3" parent="character" instance=ExtResource( 16 )]
+position = Vector2( 472, 248 )
+scale = Vector2( 0.36, 0.36 )
 
 [node name="Area2D" type="Area2D" parent="."]
 script = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 231.991, 5.24501 )
+position = Vector2( 232, 8 )
 shape = SubResource( 4 )
 
 [node name="boder" type="KinematicBody2D" parent="."]
